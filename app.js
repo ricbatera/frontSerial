@@ -70,6 +70,22 @@ server.post("/enter", function (req, res) {
     res.send("null")
 })
 
+server.post("/comando", function (req, res) {
+    let comando = req.body;
+    //console.log(comando.comando);
+    if(comando.comando != ""){
+        console.log(`Linha atual: ${linhaAtual}`)
+        port.write(comando.comando);
+        port.write('\n');
+        res.send("null");
+    }else{
+        console.log(`Linha atual: ${linhaAtual}`)
+        port.write('\n');
+        res.send("null");
+    }
+    
+})
+
 server.post("/admin", function (req, res) {
     setTimeout(() => port.write('admin\n'), 500);
     res.send("null")
